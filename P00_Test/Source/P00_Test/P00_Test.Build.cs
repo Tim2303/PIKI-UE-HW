@@ -23,8 +23,6 @@ public class P00_Test : ModuleRules
 			"Slate"
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "AndroidRuntimeSettings" });
-
 		PublicIncludePaths.AddRange(new string[] {
 			"P00_Test",
 			"P00_Test/Variant_Strategy",

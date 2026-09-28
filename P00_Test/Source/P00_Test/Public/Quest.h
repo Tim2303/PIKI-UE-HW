@@ -9,6 +9,14 @@
 class UQuestCondition;
 class UQuestSettings;
 
+UENUM()
+enum class EQuestStatus : uint8
+{
+	WaitingForStart,
+	Started,
+	Completed
+};
+
 UCLASS()
 class P00_TEST_API AQuest : public AActor
 {
@@ -25,6 +33,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
+	void UpdateStartStatus();
+	void UpdateEndStatus();
+	
+	EQuestStatus GetQuestStatus();
 
 protected:
 	UPROPERTY(EditAnywhere)
@@ -35,4 +48,7 @@ public:
 	TArray<UQuestCondition*> StartConditions;
 	UPROPERTY()
 	TArray<TObjectPtr<UQuestCondition>> EndConditions;
+	
+	UPROPERTY(BlueprintReadOnly)
+	EQuestStatus QuestStatus = EQuestStatus::WaitingForStart;
 };

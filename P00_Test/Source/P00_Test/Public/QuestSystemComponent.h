@@ -25,6 +25,9 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void RegisterQuest(AQuest *NewQuest);
+	
+	void GetActiveAndStartedQuests(TArray<AQuest*>& OutQuests);
+	
 protected:
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<AQuest>> Quests;

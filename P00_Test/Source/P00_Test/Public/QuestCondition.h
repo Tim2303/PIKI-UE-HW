@@ -6,6 +6,7 @@
 #include "UObject/Object.h"
 #include "QuestCondition.generated.h"
 
+DECLARE_MULTICAST_DELEGATE(FOnQuestConditionCompleted);
 /**
  * 
  */
@@ -18,8 +19,13 @@ public:
 	virtual void StartCondition() PURE_VIRTUAL(UQuestCondition::StartCondition,);
 	virtual void StopCondition() PURE_VIRTUAL(UQuestCondition::StopCondition,);
 	
-protected:
-	UPROPERTY(BlueprintReadOnly)
-	bool bCompleted = false;
+	UFUNCTION(BlueprintCallable)
+	bool IsCompleted() const {return bCompleted;}
 	
+	FOnQuestConditionCompleted OnQuestConditionCompleted;
+protected:
+	void Complete();
+	
+private:
+	bool bCompleted = false;
 };
