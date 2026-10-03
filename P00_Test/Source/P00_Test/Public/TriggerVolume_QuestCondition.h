@@ -19,8 +19,12 @@ public:
 	virtual void StopCondition() override;
 	
 	UFUNCTION()
-	void StartOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	void OnOverlapEvent(AActor* OverlappedActor, AActor* OtherActor);
 	
 	UPROPERTY(EditAnywhere)
 	FName OtherTag;
+	
+	// true: on exit, false on entering
+	UPROPERTY(EditAnywhere)
+	bool bCompleteOnExit = false;
 };

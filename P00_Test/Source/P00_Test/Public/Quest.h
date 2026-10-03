@@ -9,13 +9,15 @@
 class UQuestCondition;
 class UQuestSettings;
 
-UENUM()
+UENUM(BlueprintType)
 enum class EQuestStatus : uint8
 {
 	WaitingForStart,
 	Started,
 	Completed
 };
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnQuestStatusChanged, AQuest*, Quest, EQuestStatus, NewStatus);
 
 UCLASS()
 class P00_TEST_API AQuest : public AActor
@@ -37,9 +39,14 @@ public:
 	void UpdateStartStatus();
 	void UpdateEndStatus();
 	
-	EQuestStatus GetQuestStatus();
+	EQuestStatus GetQuestStatus() const { return QuestStatus; }
+	
+	UPROPERTY(BlueprintAssignable)
+	FOnQuestStatusChanged OnQuestStatusChanged;
 
 protected:
+	void SetQuestStatus(EQuestStatus NewStatus);
+	
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UQuestSettings> QuestSettings;
 	
