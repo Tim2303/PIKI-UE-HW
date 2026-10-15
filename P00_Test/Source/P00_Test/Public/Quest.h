@@ -47,7 +47,7 @@ public:
 protected:
 	void SetQuestStatus(EQuestStatus NewStatus);
 	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TObjectPtr<UQuestSettings> QuestSettings;
 	
 public:

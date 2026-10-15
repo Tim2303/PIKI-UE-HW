@@ -43,6 +43,8 @@ void AQuest::UpdateStartStatus()
 		}
 		
 		UQuestCondition *QuestCondition = NewObject<UQuestCondition>(this, ConditionTemplate);
+		QuestCondition->bIsEndCondition = true;
+		
 		QuestCondition->StartCondition();
 		QuestCondition->OnQuestConditionCompleted.AddUObject(this, &AQuest::UpdateEndStatus);
 		

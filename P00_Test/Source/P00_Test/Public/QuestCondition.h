@@ -23,6 +23,9 @@ public:
 	bool IsCompleted() const {return bCompleted;}
 	
 	FOnQuestConditionCompleted OnQuestConditionCompleted;
+	
+	bool bIsEndCondition = false;
+	
 protected:
 	void Complete();
 	

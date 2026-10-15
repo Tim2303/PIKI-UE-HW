@@ -29,7 +29,7 @@ void UQuestSystemComponent::BeginPlay()
 	for (const TSubclassOf<AQuest>& QuestClass : Quests)
 	{
 		AQuest *Quest = GetWorld()->SpawnActor<AQuest>(QuestClass);
-		ActiveQuests.Add(Quest);
+		ActiveQuests.AddUnique(Quest);
 	}
 	
 }
@@ -53,6 +53,17 @@ void UQuestSystemComponent::GetActiveAndStartedQuests(TArray<AQuest*>& OutQuests
 	for (AQuest* Quest : ActiveQuests)
 	{
 		if (Quest->GetQuestStatus() == EQuestStatus::Started)
+		{
+			OutQuests.Add(Quest);
+		}
+	}
+}
+
+void UQuestSystemComponent::GetCompletedQuests(TArray<AQuest*>& OutQuests)
+{
+	for (AQuest* Quest : ActiveQuests)
+	{
+		if (Quest->GetQuestStatus() == EQuestStatus::Completed)
 		{
 			OutQuests.Add(Quest);
 		}

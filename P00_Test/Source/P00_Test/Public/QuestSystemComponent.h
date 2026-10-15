@@ -16,17 +16,19 @@ class P00_TEST_API UQuestSystemComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UQuestSystemComponent();
-
-protected:
+	
 	// Called when the game starts
 	virtual void BeginPlay() override;
-
-public:	
+	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void RegisterQuest(AQuest *NewQuest);
 	
+	UFUNCTION(BlueprintCallable)
 	void GetActiveAndStartedQuests(TArray<AQuest*>& OutQuests);
+	
+	UFUNCTION(BlueprintCallable)
+	void GetCompletedQuests(TArray<AQuest*>& OutQuests);
 	
 protected:
 	UPROPERTY(EditAnywhere)

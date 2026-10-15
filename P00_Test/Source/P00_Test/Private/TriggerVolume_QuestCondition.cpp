@@ -13,7 +13,7 @@ void UTriggerVolume_QuestCondition::StartCondition()
 		return;
 	}
 	
-	if (bCompleteOnExit)
+	if (bIsEndCondition)
 	{
 		Quest->OnActorEndOverlap.AddDynamic(this, &UTriggerVolume_QuestCondition::OnOverlapEvent);
 	} else

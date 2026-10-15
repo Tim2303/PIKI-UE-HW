@@ -23,8 +23,4 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	FName OtherTag;
-	
-	// true: on exit, false on entering
-	UPROPERTY(EditAnywhere)
-	bool bCompleteOnExit = false;
 };

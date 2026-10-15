@@ -10,3 +10,7 @@ Content/
 DerivedDataCache/
 Intermediate/
 Saved/
+Plugins/
+
+# Rebuilded files
+P00_Test.sln
