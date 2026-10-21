@@ -19,12 +19,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FText Name;
 	
-	UPROPERTY(Instanced, EditAnywhere)
-	TArray<TObjectPtr<UQuestCondition>> StartConditionsDirect;
+	UPROPERTY()
+	TArray<TObjectPtr<UQuestCondition>> StartConditionsInst;
+	UPROPERTY()
+	TArray<TSubclassOf<UQuestCondition>> StartConditions_DEPRECATED;
+	UPROPERTY(Instanced,EditAnywhere)
 	
-	UPROPERTY(EditAnywhere)
-	TArray<TSubclassOf<UQuestCondition>> StartConditions;
-	
-	UPROPERTY(EditAnywhere)
-	TArray<TSubclassOf<UQuestCondition>> StopConditions;
+	TArray<TObjectPtr<UQuestCondition>> EndConditionsInst;
+	UPROPERTY()
+	TArray<TSubclassOf<UQuestCondition>> EndConditions_DEPRECATED;
+
+	virtual void PostLoad() override;
 };

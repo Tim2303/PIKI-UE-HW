@@ -8,6 +8,11 @@
 #include "QuestSystemComponent.h"
 #include "GameFramework/GameModeBase.h"
 
+int32 bDebugInstantFinish = 0;
+FAutoConsoleVariableRef CVarDebugInstantFinish(TEXT("quest.InstantFinish"),
+	bDebugInstantFinish, TEXT("Debug Instantly Finish Quests"),
+	ECVF_Cheat);
+
 // Sets default values
 AQuest::AQuest()
 {
@@ -35,14 +40,20 @@ void AQuest::UpdateStartStatus()
 		}
 	}
 	
-	for (const TSubclassOf<UQuestCondition>& ConditionTemplate : QuestSettings->StopConditions)
+	if (bDebugInstantFinish)
+	{
+		QuestStatus = EQuestStatus::Completed;
+		return;
+	}
+	
+	for (const UQuestCondition* ConditionTemplate : QuestSettings->EndConditionsInst)
 	{
 		if (!ensureMsgf(ConditionTemplate, TEXT("Bad setup for quest %s"), *GetNameSafe(this)))
 		{
 			return;
 		}
 		
-		UQuestCondition *QuestCondition = NewObject<UQuestCondition>(this, ConditionTemplate);
+		UQuestCondition *QuestCondition = DuplicateObject<UQuestCondition>(ConditionTemplate, this);
 		QuestCondition->bIsEndCondition = true;
 		
 		QuestCondition->StartCondition();
@@ -87,20 +98,21 @@ void AQuest::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	UQuestSystemComponent *QuestSystemComponent = GetWorld()->GetAuthGameMode()->GetComponentByClass<UQuestSystemComponent>();
+	UQuestSystemComponent *QuestSystemComponent =
+		GetWorld()->GetAuthGameMode()->GetComponentByClass<UQuestSystemComponent>();
 	if (QuestSystemComponent)
 	{
 		QuestSystemComponent->RegisterQuest(this);
 	}
 	
-	for (const TSubclassOf<UQuestCondition>& ConditionTemplate : QuestSettings->StartConditions)
+	for (const UQuestCondition* ConditionTemplate : QuestSettings->StartConditionsInst)
 	{
 		if (!ensureMsgf(ConditionTemplate, TEXT("Bad setup for quest %s"), *GetNameSafe(this)))
 		{
 			return;
 		}
 		
-		UQuestCondition *QuestCondition = NewObject<UQuestCondition>(this, ConditionTemplate);
+		UQuestCondition *QuestCondition = DuplicateObject<UQuestCondition>(ConditionTemplate, this);
 		QuestCondition->OnQuestConditionCompleted.AddUObject(this, &AQuest::UpdateStartStatus);
 		StartConditions.Add(QuestCondition);
 		

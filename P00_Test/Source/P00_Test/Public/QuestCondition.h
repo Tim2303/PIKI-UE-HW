@@ -6,6 +6,7 @@
 #include "UObject/Object.h"
 #include "QuestCondition.generated.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogQuest, Warning, Warning);
 DECLARE_MULTICAST_DELEGATE(FOnQuestConditionCompleted);
 /**
  * 

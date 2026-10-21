@@ -20,6 +20,11 @@ UQuestSystemComponent::UQuestSystemComponent()
 void UQuestSystemComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// for (TActorIterator<AQuest> It(GetWorld(), AQuest::StaticClass()); It; ++It)
+	// {
+	// 	ActiveQuests.AddUnique(*It);
+	// }
 	
 	for (const TSubclassOf<AQuest>& QuestClass : Quests)
 	{
