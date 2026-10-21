@@ -25,6 +25,8 @@ void AQuest::UpdateStartStatus()
 {
 	if (QuestStatus != EQuestStatus::WaitingForStart)
 	{
+		UE_LOG(LogQuest, Verbose, TEXT("Quest %s: UpdateStartStatus ignored, status is %s"),
+			*GetNameSafe(this), *UEnum::GetValueAsString(QuestStatus));
 		return;
 	}
 	
@@ -32,17 +34,20 @@ void AQuest::UpdateStartStatus()
 	{
 		if (!ensure(Condition))
 		{
+			UE_LOG(LogQuest, Error, TEXT("Quest %s: null start condition"), *GetNameSafe(this));
 			return;
 		}
 		if (!Condition->IsCompleted())
 		{
+			UE_LOG(LogQuest, Verbose, TEXT("Quest %s: start condition %s not completed yet"),
+				*GetNameSafe(this), *GetNameSafe(Condition));
 			return;
 		}
 	}
 	
 	if (bDebugInstantFinish)
 	{
-		QuestStatus = EQuestStatus::Completed;
+		SetQuestStatus(EQuestStatus::Completed);
 		return;
 	}
 	
@@ -50,6 +55,8 @@ void AQuest::UpdateStartStatus()
 	{
 		if (!ensureMsgf(ConditionTemplate, TEXT("Bad setup for quest %s"), *GetNameSafe(this)))
 		{
+			UE_LOG(LogQuest, Error, TEXT("Quest %s: null end condition template in %s"),
+				*GetNameSafe(this), *GetNameSafe(QuestSettings));
 			return;
 		}
 		
@@ -71,10 +78,13 @@ void AQuest::UpdateEndStatus()
 	{
 		if (!ensure(Condition))
 		{
+			UE_LOG(LogQuest, Error, TEXT("Quest %s: null end condition"), *GetNameSafe(this));
 			return;
 		}
 		if (!Condition->IsCompleted())
 		{
+			UE_LOG(LogQuest, Verbose, TEXT("Quest %s: end condition %s not completed yet"),
+				*GetNameSafe(this), *GetNameSafe(Condition));
 			return;
 		}
 	}
@@ -89,6 +99,9 @@ void AQuest::SetQuestStatus(EQuestStatus NewStatus)
 		return;
 	}
 	
+	UE_LOG(LogQuest, Log, TEXT("Quest %s: status %s -> %s"), *GetNameSafe(this),
+		*UEnum::GetValueAsString(QuestStatus), *UEnum::GetValueAsString(NewStatus));
+	
 	QuestStatus = NewStatus;
 	OnQuestStatusChanged.Broadcast(this, QuestStatus);
 }
@@ -98,17 +111,31 @@ void AQuest::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	UE_LOG(LogQuest, Log, TEXT("Quest %s: BeginPlay"), *GetNameSafe(this));
+
+	if (!ensureMsgf(QuestSettings, TEXT("Quest %s has no QuestSettings"), *GetNameSafe(this)))
+	{
+		UE_LOG(LogQuest, Error, TEXT("Quest %s: QuestSettings is not set, quest will not work"), *GetNameSafe(this));
+		return;
+	}
+	
 	UQuestSystemComponent *QuestSystemComponent =
 		GetWorld()->GetAuthGameMode()->GetComponentByClass<UQuestSystemComponent>();
 	if (QuestSystemComponent)
 	{
 		QuestSystemComponent->RegisterQuest(this);
+	} else
+	{
+		UE_LOG(LogQuest, Warning, TEXT("Quest %s: QuestSystemComponent not found on GameMode, quest not registered"),
+			*GetNameSafe(this));
 	}
 	
 	for (const UQuestCondition* ConditionTemplate : QuestSettings->StartConditionsInst)
 	{
 		if (!ensureMsgf(ConditionTemplate, TEXT("Bad setup for quest %s"), *GetNameSafe(this)))
 		{
+			UE_LOG(LogQuest, Error, TEXT("Quest %s: null start condition template in %s"),
+				*GetNameSafe(this), *GetNameSafe(QuestSettings));
 			return;
 		}
 		

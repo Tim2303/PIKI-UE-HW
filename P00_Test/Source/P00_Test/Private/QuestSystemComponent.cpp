@@ -4,6 +4,7 @@
 
 #include "EngineUtils.h"
 #include "Quest.h"
+#include "QuestCondition.h"
 
 // Sets default values for this component's properties
 UQuestSystemComponent::UQuestSystemComponent()
@@ -28,10 +29,15 @@ void UQuestSystemComponent::BeginPlay()
 	
 	for (const TSubclassOf<AQuest>& QuestClass : Quests)
 	{
+		if (!QuestClass)
+		{
+			UE_LOG(LogQuest, Warning, TEXT("QuestSystem: empty quest class in Quests array"));
+			continue;
+		}
+		
 		AQuest *Quest = GetWorld()->SpawnActor<AQuest>(QuestClass);
 		ActiveQuests.AddUnique(Quest);
 	}
-	
 }
 
 
@@ -45,7 +51,9 @@ void UQuestSystemComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 
 void UQuestSystemComponent::RegisterQuest(AQuest* NewQuest)
 {
-	ActiveQuests.AddUnique(NewQuest);
+	const int32 Index = ActiveQuests.AddUnique(NewQuest);
+	UE_LOG(LogQuest, Log, TEXT("QuestSystem: registered quest %s (index %d, total %d)"),
+		*GetNameSafe(NewQuest), Index, ActiveQuests.Num());
 }
 
 void UQuestSystemComponent::GetActiveAndStartedQuests(TArray<AQuest*>& OutQuests)
