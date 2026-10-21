@@ -10,7 +10,7 @@ DECLARE_MULTICAST_DELEGATE(FOnQuestConditionCompleted);
 /**
  * 
  */
-UCLASS(Abstract, Blueprintable, BlueprintType)
+UCLASS(Abstract, Blueprintable, BlueprintType, EditInlineNew)
 class P00_TEST_API UQuestCondition : public UObject
 {
 	GENERATED_BODY()

@@ -79,14 +79,15 @@
 /Engine/Source/Programs/AutomationTool/Mutable/bin
 /Engine/Source/Programs/AutomationTool/OneSkyLocalization/obj
 /Engine/Source/Programs/AutomationTool/OneSkyLocalization/bin
-/Documents/Unreal Projects/P00_Test/Content
-/Documents/Unreal Projects/P00_Test/Saved
-/Documents/Unreal Projects/P00_Test/Intermediate
-/Documents/Unreal Projects/P00_Test/.vscode
-/Documents/Unreal Projects/P00_Test/DerivedDataCache
-/Documents/Unreal Projects/P00_Test/.idea
-/Documents/Unreal Projects/P00_Test/Intermediate/Build/BuildRulesProjects/P00_TestModuleRules/obj
-/Documents/Unreal Projects/P00_Test/Intermediate/Build/BuildRulesProjects/P00_TestModuleRules/bin
+/HSE/Course 2/PIKI-UE-HW/P00_Test/Content
+/HSE/Course 2/PIKI-UE-HW/P00_Test/DerivedDataCache
+/HSE/Course 2/PIKI-UE-HW/P00_Test/.idea
+/HSE/Course 2/PIKI-UE-HW/P00_Test/Saved
+/HSE/Course 2/PIKI-UE-HW/P00_Test/Intermediate
+/HSE/Course 2/PIKI-UE-HW/P00_Test/.vscode
+/HSE/Course 2/PIKI-UE-HW/P00_Test/Plugins/Developer/RiderLink/Intermediate
+/HSE/Course 2/PIKI-UE-HW/P00_Test/Intermediate/Build/BuildRulesProjects/P00_TestModuleRules/obj
+/HSE/Course 2/PIKI-UE-HW/P00_Test/Intermediate/Build/BuildRulesProjects/P00_TestModuleRules/bin
 /Engine/Plugins/ScriptPlugin/Source/ScriptGeneratorUbtPlugin/obj
 /Engine/Plugins/ScriptPlugin/Source/ScriptGeneratorUbtPlugin/bin
 /Engine/Source/Programs/AutomationTool/SmartlingLocalization/obj

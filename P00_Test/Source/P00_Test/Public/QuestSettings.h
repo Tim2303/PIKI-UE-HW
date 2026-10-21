@@ -19,6 +19,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FText Name;
 	
+	UPROPERTY(Instanced, EditAnywhere)
+	TArray<TObjectPtr<UQuestCondition>> StartConditionsDirect;
+	
 	UPROPERTY(EditAnywhere)
 	TArray<TSubclassOf<UQuestCondition>> StartConditions;
 	

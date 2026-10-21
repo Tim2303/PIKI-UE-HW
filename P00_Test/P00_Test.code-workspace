@@ -5557,7 +5557,7 @@
 			{
 				"name": "Launch P00_Test (Debug)",
 				"request": "launch",
-				"program": "/home/timmimin/Documents/Unreal Projects/P00_Test/Binaries/Linux/UnrealGame-Linux-Debug",
+				"program": "/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/Binaries/Linux/UnrealGame-Linux-Debug",
 				"preLaunchTask": "P00_Test Linux Debug Build",
 				"args": [
 				],
@@ -5569,7 +5569,7 @@
 			{
 				"name": "Launch P00_Test (DebugGame)",
 				"request": "launch",
-				"program": "/home/timmimin/Documents/Unreal Projects/P00_Test/Binaries/Linux/UnrealGame-Linux-DebugGame",
+				"program": "/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/Binaries/Linux/UnrealGame-Linux-DebugGame",
 				"preLaunchTask": "P00_Test Linux DebugGame Build",
 				"args": [
 				],
@@ -5581,7 +5581,7 @@
 			{
 				"name": "Launch P00_Test (Development)",
 				"request": "launch",
-				"program": "/home/timmimin/Documents/Unreal Projects/P00_Test/Binaries/Linux/UnrealGame",
+				"program": "/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/Binaries/Linux/UnrealGame",
 				"preLaunchTask": "P00_Test Linux Development Build",
 				"args": [
 				],
@@ -5593,7 +5593,7 @@
 			{
 				"name": "Launch P00_Test (Test)",
 				"request": "launch",
-				"program": "/home/timmimin/Documents/Unreal Projects/P00_Test/Binaries/Linux/UnrealGame-Linux-Test",
+				"program": "/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/Binaries/Linux/UnrealGame-Linux-Test",
 				"preLaunchTask": "P00_Test Linux Test Build",
 				"args": [
 				],
@@ -5605,7 +5605,7 @@
 			{
 				"name": "Launch P00_Test (Shipping)",
 				"request": "launch",
-				"program": "/home/timmimin/Documents/Unreal Projects/P00_Test/Binaries/Linux/UnrealGame-Linux-Shipping",
+				"program": "/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/Binaries/Linux/UnrealGame-Linux-Shipping",
 				"preLaunchTask": "P00_Test Linux Shipping Build",
 				"args": [
 				],
@@ -5840,7 +5840,7 @@
 				"args": [
 					"-projectfiles",
 					"-vscode",
-					"-project=/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject",
+					"-project=/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject",
 					"-game",
 					"-engine",
 					"-dotnet"

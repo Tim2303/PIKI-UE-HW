@@ -4,19 +4,6 @@
 UNREALROOTPATH = /home/timmimin
 
 TARGETS = \
-	P00_Test-Android-DebugGame  \
-	P00_Test-Android-Development  \
-	P00_Test-Android-Shipping  \
-	P00_Test-Linux-DebugGame  \
-	P00_Test-Linux-Development  \
-	P00_Test-Linux-Shipping  \
-	P00_Test-LinuxArm64-DebugGame  \
-	P00_Test-LinuxArm64-Development  \
-	P00_Test-LinuxArm64-Shipping  \
-	P00_Test \
-	P00_TestEditor-Linux-DebugGame  \
-	P00_TestEditor-Linux-Development  \
-	P00_TestEditor \
 	LiveLinkHub-Linux-DebugGame  \
 	LiveLinkHub-Linux-Development  \
 	LiveLinkHub \
@@ -35,7 +22,20 @@ TARGETS = \
 	UnrealGame-LinuxArm64-DebugGame  \
 	UnrealGame-LinuxArm64-Development  \
 	UnrealGame-LinuxArm64-Shipping  \
-	UnrealGame\
+	UnrealGame \
+	P00_Test-Android-DebugGame  \
+	P00_Test-Android-Development  \
+	P00_Test-Android-Shipping  \
+	P00_Test-Linux-DebugGame  \
+	P00_Test-Linux-Development  \
+	P00_Test-Linux-Shipping  \
+	P00_Test-LinuxArm64-DebugGame  \
+	P00_Test-LinuxArm64-Development  \
+	P00_Test-LinuxArm64-Shipping  \
+	P00_Test \
+	P00_TestEditor-Linux-DebugGame  \
+	P00_TestEditor-Linux-Development  \
+	P00_TestEditor\
 	configure
 
 BUILD = "$(UNREALROOTPATH)/Engine/Build/BatchFiles/RunUBT.sh"
@@ -48,43 +48,6 @@ StandardSet: RequiredTools UnrealFrontend P00_TestEditor UnrealInsights
 
 DebugSet: RequiredTools UnrealFrontend-Linux-Debug P00_TestEditor-Linux-Debug
 
-
-P00_Test-Android-DebugGame:
-	 $(BUILD) P00_Test Android DebugGame  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-Android-Development:
-	 $(BUILD) P00_Test Android Development  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-Android-Shipping:
-	 $(BUILD) P00_Test Android Shipping  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-Linux-DebugGame:
-	 $(BUILD) P00_Test Linux DebugGame  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-Linux-Development:
-	 $(BUILD) P00_Test Linux Development  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-Linux-Shipping:
-	 $(BUILD) P00_Test Linux Shipping  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-LinuxArm64-DebugGame:
-	 $(BUILD) P00_Test LinuxArm64 DebugGame  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-LinuxArm64-Development:
-	 $(BUILD) P00_Test LinuxArm64 Development  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test-LinuxArm64-Shipping:
-	 $(BUILD) P00_Test LinuxArm64 Shipping  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_Test: P00_Test-Linux-Development
-
-P00_TestEditor-Linux-DebugGame:
-	 $(BUILD) P00_TestEditor Linux DebugGame  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_TestEditor-Linux-Development:
-	 $(BUILD) P00_TestEditor Linux Development  -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" $(ARGS)
-
-P00_TestEditor: P00_TestEditor-Linux-Development
 
 LiveLinkHub-Linux-DebugGame:
 	 $(BUILD) LiveLinkHub Linux DebugGame  $(ARGS)
@@ -137,7 +100,44 @@ UnrealGame-LinuxArm64-Shipping:
 
 UnrealGame: UnrealGame-Linux-Development
 
+P00_Test-Android-DebugGame:
+	 $(BUILD) P00_Test Android DebugGame  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-Android-Development:
+	 $(BUILD) P00_Test Android Development  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-Android-Shipping:
+	 $(BUILD) P00_Test Android Shipping  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-Linux-DebugGame:
+	 $(BUILD) P00_Test Linux DebugGame  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-Linux-Development:
+	 $(BUILD) P00_Test Linux Development  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-Linux-Shipping:
+	 $(BUILD) P00_Test Linux Shipping  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-LinuxArm64-DebugGame:
+	 $(BUILD) P00_Test LinuxArm64 DebugGame  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-LinuxArm64-Development:
+	 $(BUILD) P00_Test LinuxArm64 Development  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test-LinuxArm64-Shipping:
+	 $(BUILD) P00_Test LinuxArm64 Shipping  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_Test: P00_Test-Linux-Development
+
+P00_TestEditor-Linux-DebugGame:
+	 $(BUILD) P00_TestEditor Linux DebugGame  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_TestEditor-Linux-Development:
+	 $(BUILD) P00_TestEditor Linux Development  -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" $(ARGS)
+
+P00_TestEditor: P00_TestEditor-Linux-Development
+
 configure:
-	$(BUILD) -ProjectFiles -Project="/home/timmimin/Documents/Unreal Projects/P00_Test/P00_Test.uproject" -Game 
+	$(BUILD) -ProjectFiles -Project="/home/timmimin/HSE/Course 2/PIKI-UE-HW/P00_Test/P00_Test.uproject" -Game 
 
 .PHONY: $(TARGETS)
